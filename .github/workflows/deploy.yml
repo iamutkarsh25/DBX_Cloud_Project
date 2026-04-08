@@ -21,8 +21,8 @@ jobs:
         role-to-assume: arn:aws:iam::515966539109:role/OIDC_UT_DeployRole
         aws-region: us-east-2
 
-    - name: Deploying with SAM
-      run: |
-        sam build --template-file templates/resource.yml
-        sam deploy --stack-name resource-stack --capabilities CAPABILITY_IAM
-        
+    - name: Build Lambda
+      run: sam build --template-file templates/resource.yml
+
+    - name: Deploy Lambda
+      run: sam deploy --stack-name test-lambda-stack --capabilities CAPABILITY_IAM
