@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     permission:
       id-token: write
       contents: read
