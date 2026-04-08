@@ -1,0 +1,12 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Deploy Lambda directly from folder
+
+Resources:
+  TestLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: test-lambda
+      Runtime: python3.12
+      Handler: app.handler
+      CodeUri: lambda/test_lambda/
