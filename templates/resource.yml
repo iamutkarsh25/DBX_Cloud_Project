@@ -4,11 +4,11 @@ Description: Deploy Lambda directly from folder
 
 Resources:
 
-ArtifactsBucket:
-  Type: AWS::S3::Bucket
-  Properties:
-    BucketName: unique-artifactsbucket-lambda
-    AccessControl: Private
+  ArtifactsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: unique-artifactsbucket-lambda
+      AccessControl: Private
 
   # TestLambdaFunction:
   #   Type: AWS::Serverless::Function
