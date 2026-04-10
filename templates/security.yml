@@ -24,9 +24,8 @@ Resources:
               - Effect: Allow
                 Action:
                   - logs:*
-                  - s3:*
-                  - get:*
-                  - list:*
-                  - put:*
+                  - s3:GetObject
+                  - s3:ListBucket
+                  - s3:PutObject
                   - lambda:*
                 Resource: "*"
