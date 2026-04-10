@@ -18,7 +18,7 @@ Resources:
     Properties:
       FunctionName: nasa-ingestion-lambda
       Runtime: python3.12
-      Handler: app.handler
+      Handler: app.lambda_handler
       CodeUri: ../lambda/nasa_data_ingestion/
       Environment:
         Variables:
