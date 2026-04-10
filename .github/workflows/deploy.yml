@@ -28,7 +28,7 @@ jobs:
       run: aws cloudformation deploy --template-file templates/s3.yml --stack-name s3-stack --capabilities CAPABILITY_IAM --region us-east-2
 
     - name: Deploy Security Stack
-      run: aws cloudformation deploy --template-file templates/security.yml --stack-name security-stack --capabilities CAPABILITY_IAM --region us-east-2
+      run: aws cloudformation deploy --template-file templates/security.yml --stack-name security-stack --capabilities CAPABILITY_NAMED_IAM --region us-east-2
 
     - name: Build SAM template
       run: sam build --template-file templates/resource.yml
