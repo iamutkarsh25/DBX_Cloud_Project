@@ -21,9 +21,6 @@ jobs:
         role-to-assume: arn:aws:iam::515966539109:role/OIDC_UT_DeployRole
         aws-region: us-east-2
 
-    - name: Deploy resources
-      run: aws cloudformation deploy --template-file templates/resource.yml --stack-name my-stack --region us-east-2
-    
     - name: Debug folder structure
       run: ls -R lambda/
 

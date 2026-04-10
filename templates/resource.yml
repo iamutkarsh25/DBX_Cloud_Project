@@ -10,10 +10,10 @@ Resources:
       BucketName: unique-artifactsbucket-lambda
       AccessControl: Private
 
-    TestLambdaFunction:
-      Type: AWS::Serverless::Function
-      Properties:
-        FunctionName: test-lambda
-        Runtime: python3.12
-        Handler: app.handler
-        CodeUri: ../lambda/test_lambda/
+  TestLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: test-lambda
+      Runtime: python3.12
+      Handler: app.handler
+      CodeUri: ../lambda/test_lambda/
