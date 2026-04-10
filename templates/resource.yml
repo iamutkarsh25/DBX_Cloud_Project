@@ -11,3 +11,18 @@ Resources:
       Runtime: python3.12
       Handler: app.handler
       CodeUri: ../lambda/test_lambda/
+
+
+  NasaIngestionLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: nasa-ingestion-lambda
+      Runtime: python3.12
+      Handler: app.handler
+      CodeUri: ../lambda/nasa_data_ingestion/
+      Environment:
+        Variables:
+          BUCKET_NAME: ut-raw-bucket
+          NASA_API_KEY: DccQPkmpWNG6Ni07npPxEf2tkDI5Sko62vjfarmz
+      Layers:
+        - arn:aws:lambda:us-east-2:336392948345:layer:AWSDataWrangler-Python312:24
