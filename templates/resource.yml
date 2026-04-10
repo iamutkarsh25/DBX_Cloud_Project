@@ -25,4 +25,4 @@ Resources:
           BUCKET_NAME: ut-raw-bucket
           NASA_API_KEY: DccQPkmpWNG6Ni07npPxEf2tkDI5Sko62vjfarmz
       Layers:
-        - arn:aws:lambda:us-east-2:336392948345:layer:AWSDataWrangler-Python312:24
+        - arn:aws:lambda:us-east-2:336392948345:layer:AWSSDKPandas-Python312:24
