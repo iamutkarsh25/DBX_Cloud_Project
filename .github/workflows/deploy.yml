@@ -25,10 +25,10 @@ jobs:
       run: ls -R lambda/
 
     - name: Deploy S3 Stack
-      run: sam deploy --template-file templates/s3.yml --stack-name s3-stack --region us-east-2
+      run: aws cloudformation deploy --template-file templates/s3.yml --stack-name s3-stack --region us-east-2
 
     - name: Deploy Security Stack
-      run: sam deploy --template-file temmplates/security.yml --stack-name security-stack --region us-east-2
+      run: aws cloudformation deploy --template-file templates/security.yml --stack-name security-stack --region us-east-2
 
     - name: Build SAM template
       run: sam build --template-file templates/resource.yml
