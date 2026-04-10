@@ -7,7 +7,7 @@ Resources:
 ArtifactsBucket:
   Type: AWS::S3::Bucket
   Properties:
-    BucketName: ArtifactsBucket-Lambda
+    BucketName: unique-artifactsbucket-lambda
     AccessControl: Private
 
   # TestLambdaFunction:

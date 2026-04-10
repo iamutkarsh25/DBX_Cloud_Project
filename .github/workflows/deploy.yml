@@ -21,11 +21,14 @@ jobs:
         role-to-assume: arn:aws:iam::515966539109:role/OIDC_UT_DeployRole
         aws-region: us-east-2
 
-    - name: Build Lambda
-      run: sam build --template-file templates/resource.yml
+    - name: Deploy resources
+      run: aws cloudformation deploy --template-file templates/resource.yml --stack-name my-stack --region us-east-2
+
+    # - name: Build Lambda
+    #   run: sam build --template-file templates/resource.yml
     
     - name: Debug folder structure
       run: ls -R lambda/
 
-    - name: Deploy Lambda
-      run: sam deploy --template-file .aws-sam/build/template.yaml --stack-name test-lambda-stack --capabilities CAPABILITY_IAM --region us-east-2
+    # - name: Deploy Lambda
+    #   run: sam deploy --template-file .aws-sam/build/template.yaml --stack-name test-lambda-stack --capabilities CAPABILITY_IAM --region us-east-2
