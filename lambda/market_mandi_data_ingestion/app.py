@@ -13,7 +13,7 @@ def lambda_handler(event, context):
 
     response = requests.get(url)
     if response.status_code != 200:
-        raise Exception(f"Mandi API error: {response.text}")
+        raise Exception(f"Mandi API Error: {response.text}")
     
     data = response.json()
 
