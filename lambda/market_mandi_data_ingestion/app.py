@@ -18,16 +18,18 @@ def lambda_handler(event, context):
     data = response.json()
 
     bucket_name = os.environ['BUCKET_NAME']
+    date_folder = datetime.now().strftime('%m/%Y')
     file_name = f"mandi_data_{datetime.now().strftime('%Y%m%d')}.json"
+    s3_key = f"Mandi_Data/{date_folder}/{file_name}"
 
     s3_client.put_object(
         Bucket=bucket_name,
-        Key=file_name,
+        Key=s3_key,
         Body=json.dumps(data),
         ContentType="application/json"
     )
 
-    print(f"Saved Mandi data to s3://{bucket_name}/{file_name}")
+    print(f"Saved Mandi data to s3://{bucket_name}/{s3_key}")
 
     return {
         'statusCode': 200,
