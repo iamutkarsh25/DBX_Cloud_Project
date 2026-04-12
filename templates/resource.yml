@@ -21,16 +21,7 @@ Parameters:
 
   MandiResourceID:
     Type: String
-    Description: OIDC role for the Lambda function
-
-
-Resources:
-
-  TestLambdaFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      FunctionName: test-lambda
-    Description: API key for Mandi API
+    Description: Resource ID for the Mandi API
 
 Resources:
 
