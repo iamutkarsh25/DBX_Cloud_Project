@@ -49,7 +49,7 @@ Resources:
       Environment:
         Variables:
           BUCKET_NAME: ut-raw-bucket
-          NASA_API_KEY: !Ref NASAAapiKEY
+          NASA_API_KEY: !Ref NASAapiKEY
       Layers:
         - !Ref AWSPandaslayer
       Role: !Sub arn:aws:iam::515966539109:role/${OIDCRole}
