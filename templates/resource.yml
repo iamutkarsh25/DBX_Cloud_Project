@@ -61,7 +61,7 @@ Resources:
         NasaSchedule:
           Type: Schedule
           Properties:
-            Schedule: "cron(23 13 * * ? *)"
+            Schedule: "cron(28 14 * * ? *)"
             Name: "NasaDailyTrigger"
             Description: "Run ingestion daily at 7 PM IST"
 
