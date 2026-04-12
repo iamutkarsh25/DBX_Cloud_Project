@@ -19,6 +19,11 @@ Parameters:
     Type: String
     Description: OIDC role for the Lambda function
 
+  MandiResourceID:
+    Type: String
+    Description: OIDC role for the Lambda function
+
+
 Resources:
 
   TestLambdaFunction:
@@ -50,6 +55,24 @@ Resources:
         Variables:
           BUCKET_NAME: ut-raw-bucket
           NASA_API_KEY: !Ref NASAapiKEY
+      Layers:
+        - !Ref AWSPandaslayer
+      Role: !Sub arn:aws:iam::515966539109:role/${OIDCRole}
+
+
+  MandiIngestionLambda:
+    Type: AWS:serverless::Function
+    Properties:
+      FunctionName: UT-mandi-gov-ingestion-lambda
+      Runtime: python3.12
+      Handler: app.lambda_handler
+      CodeUri: ../lambda/market_mandi_data_ingestion
+      Timeout: 900
+      Environment:
+        Variables:
+          BUCKET_NAME: ut-raw-bucket
+          Mandi_API_KEY: !Ref MandiAPIKEY
+          Resource_ID: !Ref MandiResourceID
       Layers:
         - !Ref AWSPandaslayer
       Role: !Sub arn:aws:iam::515966539109:role/${OIDCRole}
