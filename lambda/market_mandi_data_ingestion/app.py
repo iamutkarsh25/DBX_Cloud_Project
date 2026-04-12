@@ -18,7 +18,7 @@ def lambda_handler(event, context):
     data = response.json()
 
     bucket_name = os.environ['BUCKET_NAME']
-    date_folder = datetime.now().strftime('%m%Y')
+    date_folder = datetime.now().strftime('%m-%Y')
     file_name = f"mandi_data_{datetime.now().strftime('%Y%m%d')}.json"
     s3_key = f"Mandi_Data/{date_folder}/{file_name}"
 

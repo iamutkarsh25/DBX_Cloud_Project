@@ -17,7 +17,7 @@ def lambda_handler(event, context):
     data = response.json()
 
     bucket_name = os.environ['BUCKET_NAME']
-    folder_name = datetime.now().strftime('%m%Y')
+    folder_name = datetime.now().strftime('%m-%Y')
     file_name = f"nasa_data_{datetime.now().strftime('%Y%m%d')}.json"
     s3_key = f"Nasa_data/{folder_name}/{file_name}"
 
