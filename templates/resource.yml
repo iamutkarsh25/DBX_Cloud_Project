@@ -57,11 +57,13 @@ Resources:
       Layers:
         - !Ref AWSPandaslayer
       Role: !Sub arn:aws:iam::515966539109:role/${OIDCRole}
-      events:
+      Events:
         NasaSchedule:
           Type: Schedule
           Properties:
-            Schedule: cron(20 13 * * ? *)
+            Schedule: "cron(23 13 * * ? *)"
+            Name: "NasaDailyTrigger"
+            Description: "Run ingestion daily at 7 PM IST"
 
 
   MandiIngestionLambda:
@@ -84,7 +86,9 @@ Resources:
         MandiSchedule:
           Type: Schedule
           Properties:
-            Schedule: cron(30 14 * * ? *)
+            Schedule: "cron(30 13 * * ? *)"
+            Name: "MandiDailyTrigger"
+            Description: "Run ingestion daily at 7 PM IST"
 
   AQIIngestionLambda:
     Type: AWS::Serverless::Function
@@ -106,4 +110,6 @@ Resources:
         AQISchedule:
           Type: Schedule
           Properties:
-            Schedule: cron(30 13 * * ? *)
+            Schedule: "cron(30 13 * * ? *)"
+            Name: "AQIDailyTrigger"
+            Description: "Run ingestion daily at 7 PM IST"
