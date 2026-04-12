@@ -1,0 +1,6 @@
+{
+    "NASA_api_KEY": "DccQPkmpWNG6Ni07npPxEf2tkDI5Sko62vjfarmz",
+    "Mandi_API_KEY": "579b464db66ec23bdd000001cacf78c8ad99497646444df221dbe3f6",
+    "AWS_Pandas_layer": "arn:aws:lambda:us-east-2:336392948345:layer:AWSSDKPandas-Python312:24",
+    "OIDC_Role": "UT_LambdaServiceRole"
+}

@@ -2,6 +2,33 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Deploy Lambda directly from folder
 
+parameters:
+  NASA_api_KEY:
+    Type: String
+    Description: API key for NASA API
+  
+  Mandi_API_KEY:
+    Type: String
+    Description: API key for Mandi API
+
+  AWS_Pandas_layer:
+    Type: String
+    Description: ARN for the AWS SDK for Pandas layer
+
+  OIDC_Role:
+    Type: String
+    Description: OIDC role for the Lambda function
+
+Resources:
+
+  TestLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: test-lambda
+    Description: API key for Mandi API
+
+  
+
 Resources:
 
   TestLambdaFunction:
@@ -24,7 +51,7 @@ Resources:
       Environment:
         Variables:
           BUCKET_NAME: ut-raw-bucket
-          NASA_API_KEY: DccQPkmpWNG6Ni07npPxEf2tkDI5Sko62vjfarmz
+          NASA_API_KEY: !Ref NASA_api_KEY
       Layers:
-        - arn:aws:lambda:us-east-2:336392948345:layer:AWSSDKPandas-Python312:24
-      Role: arn:aws:iam::515966539109:role/UT_LambdaServiceRole
+        - !Ref AWS_Pandas_layer
+      Role: !Sub arn:aws:iam::515966539109:role/${OIDC_Role}
