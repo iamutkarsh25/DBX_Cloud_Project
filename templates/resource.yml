@@ -2,20 +2,20 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Deploy Lambda directly from folder
 
-parameters:
-  NASA_api_KEY:
+Parameters:
+  NASAapiKEY:
     Type: String
     Description: API key for NASA API
   
-  Mandi_API_KEY:
+  MandiAPIKEY:
     Type: String
     Description: API key for Mandi API
 
-  AWS_Pandas_layer:
+  AWSPandaslayer:
     Type: String
     Description: ARN for the AWS SDK for Pandas layer
 
-  OIDC_Role:
+  OIDCRole:
     Type: String
     Description: OIDC role for the Lambda function
 
@@ -46,12 +46,12 @@ Resources:
       FunctionName: nasa-ingestion-lambda
       Runtime: python3.12
       Handler: app.lambda_handler
-      CodeUri: ../lambda/nasa_data_ingestion/
+      CodeUri: ../lambda/nasadataingestion/
       Timeout: 900
       Environment:
         Variables:
           BUCKET_NAME: ut-raw-bucket
-          NASA_API_KEY: !Ref NASA_api_KEY
+          NASA_API_KEY: !Ref NASAAapiKEY
       Layers:
-        - !Ref AWS_Pandas_layer
-      Role: !Sub arn:aws:iam::515966539109:role/${OIDC_Role}
+        - !Ref AWSPandaslayer
+      Role: !Sub arn:aws:iam::515966539109:role/${OIDCRole}
