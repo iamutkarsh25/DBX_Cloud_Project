@@ -22,6 +22,14 @@ Parameters:
   MandiResourceID:
     Type: String
     Description: Resource ID for the Mandi API
+  
+  AQIAPIKEY:
+    Type: String
+    Description: API key for AQI API
+
+  AQIResourceID:
+    Type: String
+    Description: Resource ID for the AQI API
 
 Resources:
 
@@ -64,6 +72,23 @@ Resources:
           BUCKET_NAME: ut-raw-bucket
           MandiAPIKEY: !Ref MandiAPIKEY
           MandiResourceID: !Ref MandiResourceID
+      Layers:
+        - !Ref AWSPandaslayer
+      Role: !Sub arn:aws:iam::515966539109:role/${OIDCRole}
+
+  AQIIngestionLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: UT-aqi-gov-ingestion-lambda
+      Runtime: python3.12
+      Handler: app.lambda_handler
+      CodeUri: ../lambda/AQI_data_ingestion
+      Timeout: 900
+      Environment:
+        Variables:
+          BUCKET_NAME: ut-raw-bucket
+          AQIAPIKEY: !Ref AQIAPIKEY
+          AQIResourceID: !Ref AQIResourceID
       Layers:
         - !Ref AWSPandaslayer
       Role: !Sub arn:aws:iam::515966539109:role/${OIDCRole}

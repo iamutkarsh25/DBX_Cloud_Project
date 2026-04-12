@@ -3,5 +3,7 @@
   { "ParameterKey": "MandiAPIKEY", "ParameterValue": "579b464db66ec23bdd000001cacf78c8ad99497646444df221dbe3f6" },
   { "ParameterKey": "AWSPandaslayer", "ParameterValue": "arn:aws:lambda:us-east-2:336392948345:layer:AWSSDKPandas-Python312:24" },
   { "ParameterKey": "OIDCRole", "ParameterValue": "UT_LambdaServiceRole" },
-  { "ParameterKey": "MandiResourceID", "ParameterValue": "35985678-0d79-46b4-9ed6-6f13308a1d24"}
+  { "ParameterKey": "MandiResourceID", "ParameterValue": "35985678-0d79-46b4-9ed6-6f13308a1d24"},
+  { "ParameterKey": "AQIAPIKEY", "ParameterValue": "579b464db66ec23bdd000001cacf78c8ad99497646444df221dbe3f6" },
+  { "ParameterKey": "AQIResourceID", "ParameterValue": "3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69" }
 ]
