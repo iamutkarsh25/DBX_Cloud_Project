@@ -52,7 +52,7 @@ Resources:
 
 
   MandiIngestionLambda:
-    Type: AWS:serverless::Function
+    Type: AWS::Serverless::Function
     Properties:
       FunctionName: UT-mandi-gov-ingestion-lambda
       Runtime: python3.12
