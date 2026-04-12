@@ -9,7 +9,7 @@ s3_client = boto3.client('s3')
 def lambda_handler(event, context):
     api_key = os.environ.get('MandiAPIKEY')
     resourceID= os.environ.get('MandiResourceID')
-    url  = f"https://api.data.gov.in/resource/{resourceID}?api-key={api_key}&format=json"
+    url  = f"https://api.data.gov.in/resource/{resourceID}?api-key={api_key}&format=json"    
 
     response = requests.get(url)
     if response.status_code != 200:
