@@ -62,8 +62,8 @@ Resources:
       Environment:
         Variables:
           BUCKET_NAME: ut-raw-bucket
-          Mandi_API_KEY: !Ref MandiAPIKEY
-          Resource_ID: !Ref MandiResourceID
+          MandiAPIKEY: !Ref MandiAPIKEY
+          MandiResourceID: !Ref MandiResourceID
       Layers:
         - !Ref AWSPandaslayer
       Role: !Sub arn:aws:iam::515966539109:role/${OIDCRole}
