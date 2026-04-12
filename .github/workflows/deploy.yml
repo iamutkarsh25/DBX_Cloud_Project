@@ -18,7 +18,7 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
       with: 
-        role-to-assume: arn:aws:iam::${secrets.ACCOUNT_ID}:role/OIDC_UT_DeployRole
+        role-to-assume: arn:aws:iam::${{secrets.ACCOUNT_ID}}:role/OIDC_UT_DeployRole
         aws-region: us-east-2
 
     - name: Debug folder structure
