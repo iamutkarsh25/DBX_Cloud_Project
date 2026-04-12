@@ -57,6 +57,11 @@ Resources:
       Layers:
         - !Ref AWSPandaslayer
       Role: !Sub arn:aws:iam::515966539109:role/${OIDCRole}
+      events:
+        NasaSchedule:
+          Type: Schedule
+          Properties:
+            Schedule: cron(20 13 * * ? *)
 
 
   MandiIngestionLambda:
@@ -75,6 +80,11 @@ Resources:
       Layers:
         - !Ref AWSPandaslayer
       Role: !Sub arn:aws:iam::515966539109:role/${OIDCRole}
+      Events:
+        MandiSchedule:
+          Type: Schedule
+          Properties:
+            Schedule: cron(30 14 * * ? *)
 
   AQIIngestionLambda:
     Type: AWS::Serverless::Function
@@ -92,3 +102,8 @@ Resources:
       Layers:
         - !Ref AWSPandaslayer
       Role: !Sub arn:aws:iam::515966539109:role/${OIDCRole}
+      Events:
+        AQISchedule:
+          Type: Schedule
+          Properties:
+            Schedule: cron(30 13 * * ? *)
