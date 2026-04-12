@@ -27,8 +27,6 @@ Resources:
       FunctionName: test-lambda
     Description: API key for Mandi API
 
-  
-
 Resources:
 
   TestLambdaFunction:
@@ -46,7 +44,7 @@ Resources:
       FunctionName: nasa-ingestion-lambda
       Runtime: python3.12
       Handler: app.lambda_handler
-      CodeUri: ../lambda/nasadataingestion/
+      CodeUri: ../lambda/nasa_data_ingestion/
       Timeout: 900
       Environment:
         Variables:
