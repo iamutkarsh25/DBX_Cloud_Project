@@ -22,14 +22,16 @@ jobs:
         aws-region: us-east-2
 
     - name: Deploy S3 Stack
-      run: aws cloudformation deploy \
+      run: |
+        aws cloudformation deploy \
               --template-file templates/s3.yml \
               --stack-name s3-stack \
               --capabilities CAPABILITY_IAM \
               --region us-east-2
 
     - name: Deploy Security Stack
-      run: aws cloudformation deploy \
+      run: |
+        aws cloudformation deploy \
               --template-file templates/security.yml \
               --stack-name security-stack \
               --capabilities CAPABILITY_NAMED_IAM \
@@ -39,13 +41,15 @@ jobs:
       run: sam build --template-file templates/resource.yml
 
     - name: Package SAM template
-      run: sam package \
+      run: |
+        sam package \
               --template-file .aws-sam/build/template.yaml \
               --s3-bucket unique-artifactsbucket-lambda \
               --output-template-file packaged.yaml
 
     - name: Deploy SAM stack with CloudFormation
-      run: aws cloudformation deploy \
+      run: |
+        aws cloudformation deploy \
               --template-file packaged.yaml \
               --stack-name my-stack \
               --capabilities CAPABILITY_IAM \
