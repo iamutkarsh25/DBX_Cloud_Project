@@ -21,25 +21,33 @@ jobs:
         role-to-assume: arn:aws:iam::${{ secrets.ACCOUNT_ID }}:role/OIDC_UT_DeployRole
         aws-region: us-east-2
 
-    - name: Debug folder structure
-      run: ls -R lambda/
-
     - name: Deploy S3 Stack
-      run: aws cloudformation deploy --template-file templates/s3.yml --stack-name s3-stack --capabilities CAPABILITY_IAM --region us-east-2
+      run: aws cloudformation deploy \
+              --template-file templates/s3.yml \
+              --stack-name s3-stack \
+              --capabilities CAPABILITY_IAM \
+              --region us-east-2
 
     - name: Deploy Security Stack
-      run: aws cloudformation deploy --template-file templates/security.yml --stack-name security-stack --capabilities CAPABILITY_NAMED_IAM --region us-east-2
+      run: aws cloudformation deploy \
+              --template-file templates/security.yml \
+              --stack-name security-stack \
+              --capabilities CAPABILITY_NAMED_IAM \
+              --region us-east-2
 
     - name: Build SAM template
       run: sam build --template-file templates/resource.yml
 
-    - name: Deploy SAM stack
-      run: |
-        sam deploy \
-          --template-file .aws-sam/build/template.yaml \
-          --stack-name my-stack \
-          --capabilities CAPABILITY_IAM \
-          --no-fail-on-empty-changeset \
-          --region us-east-2 \
-          --s3-bucket unique-artifactsbucket-lambda \
-          --parameter-overrides file://params/param.main.json
+    - name: Package SAM template
+      run: sam package \
+              --template-file .aws-sam/build/template.yaml \
+              --s3-bucket unique-artifactsbucket-lambda \
+              --output-template-file packaged.yaml
+
+    - name: Deploy SAM stack with CloudFormation
+      run: aws cloudformation deploy \
+              --template-file packaged.yaml \
+              --stack-name my-stack \
+              --capabilities CAPABILITY_IAM \
+              --region us-east-2 \
+              --parameter-overrides file://params/param.main.json
