@@ -35,10 +35,10 @@ jobs:
 
     - name: Deploy SAM stack
       run: sam deploy \
-      --template-file .aws-sam/build/template.yaml \
-      --stack-name my-stack \
-      --capabilities CAPABILITY_IAM \
-      --no-fail-on-empty-changeset \
-      --region us-east-2 \
-      --s3-bucket unique-artifactsbucket-lambda \
-      --parameter-overrides file://params/param.main.json
+          --template-file .aws-sam/build/template.yaml \
+          --stack-name my-stack \
+          --capabilities CAPABILITY_IAM \
+          --no-fail-on-empty-changeset \
+          --region us-east-2 \
+          --s3-bucket unique-artifactsbucket-lambda \
+          --parameter-overrides file://params/param.main.json
